@@ -18,8 +18,8 @@ app.use(bodyParser.json());
 app.use(cors())
 
 
-router.get('/', async (req,res)=>{
-    await sock.sendMessage('917034760782@s.whatsapp.net', { text: 'Hi rithu'})
+router.post('/', async (req,res)=>{
+    await sock.sendMessage(req.body.phone+'@s.whatsapp.net', { text: req.body.text})
     return res.json({"status":true,"message":"Message send successful"});
 })
 

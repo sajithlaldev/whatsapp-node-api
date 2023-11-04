@@ -18,6 +18,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "@types/cors": "^2.8.15",
     "@whiskeysockets/baileys": "^6.5.0",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",

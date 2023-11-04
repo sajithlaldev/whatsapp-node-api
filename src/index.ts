@@ -18,8 +18,9 @@ app.use(bodyParser.json());
 app.use(cors())
 
 
-router.get('/',async (req,res)=>{
+router.get('/', async (req,res)=>{
     await sock.sendMessage('917034760782@s.whatsapp.net', { text: 'Hi rithu'})
+    return res.json({"status":true,"message":"Message send successful"});
 })
 
 app.use('/message', router)
@@ -54,15 +55,15 @@ async function connectToWhatsApp() {
             console.log('opened connection')
         }
     })
-    sock.ev.on('messages.upsert', async (m: any) => {
-        console.log(JSON.stringify(m, undefined, 2))
+    // sock.ev.on('messages.upsert', async (m: any) => {
+    //     console.log(JSON.stringify(m, undefined, 2))
 
-        console.log('replying to', m.messages[0].key.remoteJid)
-        if (!isMessagesent) {
-            await sock.sendMessage(m.messages[0].key.remoteJid!, { text: 'Hello there! You said:' + m.messages[0].message.conversation })
-            isMessagesent = true;
-        } else {
-            isMessagesent = false;
-        }
-    })
+    //     console.log('replying to', m.messages[0].key.remoteJid)
+    //     if (!isMessagesent) {
+    //         await sock.sendMessage(m.messages[0].key.remoteJid!, { text: 'Hello there! You said:' + m.messages[0].message.conversation })
+    //         isMessagesent = true;
+    //     } else {
+    //         isMessagesent = false;
+    //     }
+    // })
 }

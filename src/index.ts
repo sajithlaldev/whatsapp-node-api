@@ -38,7 +38,8 @@ async function connectToWhatsApp() {
 
     sock = makeWASocket({
         auth: state,
-        printQRInTerminal: true
+        printQRInTerminal: true,
+        qrTimeout: 240000
     })
     var isMessagesent = false;
     sock.ev.on('creds.update', saveCreds)
